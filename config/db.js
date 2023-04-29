@@ -5,7 +5,7 @@ const db = createPool({
   host: process.env.HOST || "localhost",
   user: process.env.USER,
   password: process.env.PASSWORD,
-  database: "admitcarddb",
+  database: process.env.DATABASE || "admitcarddb",
   connectionLimit: 10,
 });
 

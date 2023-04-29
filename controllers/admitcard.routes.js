@@ -13,11 +13,26 @@ admitcardRouter.post("/getadmitcard", (req, res) => {
   db.query(getQuery1, roll_no, (err, result) => {
     // if already existing
     if (result.length > 0) {
-      res.send({
-        status: true,
-        mssg: "Admitcard generated sucessfully",
-        admitcardInfo: result[0],
-      });
+      const user = result[0];
+      if (
+        user.name === name &&
+        user.phone === phone &&
+        user.school === school &&
+        user.class === _class &&
+        user.roll_no === roll_no &&
+        user.address === address
+      ) {
+        res.send({
+          status: true,
+          mssg: "Genrated admitcard sucessfully",
+          admitcardInfo: user,
+        });
+      } else {
+        res.send({
+          status: false,
+          mssg: "Roll no already registered, if it is yours, enter correct details or enter correct roll no",
+        });
+      }
     }
     // If non existing
     else {
