@@ -16,5 +16,5 @@ app.get("/", (req, res) => {
 app.use("/admitcard", admitcardRouter);
 
 app.listen(process.env.PORT || 4500, () => {
-  console.log("Server running at port", process.env.PORT || 4500);
+  console.log("Server running on port", process.env.PORT || 4500);
 });
