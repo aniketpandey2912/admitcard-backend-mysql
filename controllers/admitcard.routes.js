@@ -41,12 +41,12 @@ admitcardRouter.post("/getadmitcard", (req, res) => {
       let queryArr = [name, phone, school, _class, roll_no, address];
       db.query(postQuery, queryArr, (err, result) => {
         if (err) {
-          res.send({ status: false, error: err.sqlMessage });
+          res.send({ status: false, error: err });
         } else {
           let getQuery2 = `SELECT * FROM admitcard WHERE roll_no=?`;
           db.query(getQuery2, roll_no, (err1, result1) => {
             if (err1) {
-              res.send({ status: false, error: err1.sqlMessage });
+              res.send({ status: false, error: err1 });
             } else {
               res.send({
                 status: true,
