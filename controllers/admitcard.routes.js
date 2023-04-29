@@ -12,7 +12,7 @@ admitcardRouter.post("/getadmitcard", (req, res) => {
   const getQuery1 = `SELECT * FROM admitcard WHERE roll_no=?`;
   db.query(getQuery1, roll_no, (err, result) => {
     // if already existing
-    if (result.length > 0) {
+    if (result && result.length > 0) {
       const user = result[0];
       if (
         user.name === name &&
